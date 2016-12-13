@@ -39,6 +39,17 @@ function redrawMeme(image, topLine, bottomLine) {
     ctx.lineWidth = 3;
     ctx.strokeText(topLine, c.width / 2, 50)
     ctx.strokeText(bottomLine, c.width / 2,  c.height - 40)
+    var data=ctx.createImageData(1,1);
+        data.data[0]=0;
+        data.data[1]=255;
+        data.data[2]=0;
+        data.data[3]=255;
+    console.log(data)
+    for(var i = 1; i < 50; i++){
+        for(var j = 1; j < 50; j++){
+            ctx.putImageData(data,10*i, 10*j);
+        }
+    }
 }
 function saveFile() {
     window.open(document.querySelector('canvas').toDataURL());
